@@ -2,6 +2,7 @@
 bot = true
 token = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 ready_chan = "XXXXXXXXXXXXXXXXXX"
+json_data_base = "XXX"
 
 [servers]
 

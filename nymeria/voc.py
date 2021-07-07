@@ -1,17 +1,17 @@
 import json
-
+from config import config
 
 class Voice():
     def __init__(self):
         self.channelsid = []
 
     def load(self):
-        f = open("data_base.json", "r")
+        f = open(config.data_base, "r")
         data = json.load(f)
         return data
 
     def save(self, data):
-        with open("data_base.json", "w") as output:
+        with open(config.data_base, "w") as output:
             json.dump(data, output)
 
     async def voicEventTraitment(self, member, before, after):
@@ -67,6 +67,7 @@ class Voice():
 
     async def lock(self, member):
         data = self.load()
+        print(data)
         if (str(member.id) in data and
                 data[str(member.id)][1] != 0):
             channel = member.guild.get_channel(data[str(member.id)][1])

@@ -100,7 +100,7 @@ class Bot(discord.Client, Moderation, Voice):
         None
         """
         if message.content.startswith("n!voice"):
-            await self.voiceCommande(message)
+            await message.channel.send(await self.voiceCommande(message))
             return
         if message.content.startswith("n!pp"):
             pfp = message.author.avatar_url

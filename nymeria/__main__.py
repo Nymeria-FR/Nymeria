@@ -1,9 +1,7 @@
 from discord import Intents
 from nymeria import Bot
-from config import TomlConfig
+from config import TomlConfig, config
 
-global config
-config = TomlConfig("../config.toml", "../config.template.toml")
 
 def main():
     Bot_intents = Intents.none()
