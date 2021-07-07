@@ -186,3 +186,33 @@ class Voice():
             return "{}\nTu n'es pas dans un channel créé par moi".format(
                 member.mention)
         return "{}\nTu n'es connecté a aucun channel".format(member.mention)
+
+
+        async def commandes(self,message):
+
+            channel = self.get_channel(861292010057105458)
+
+            des = "Rejoins le salon vocal en dessous pour créer ton propre vocal privé,\n"
+            des += f"Voici une liste des commandes que tu peux faire dans le channel {channel.mention} :"
+            des += "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+            des += "n!voice lock \nEmpeche plus de personnes de rejoindre le vocal"
+            des += "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+            des += "n!voice unlock \nOuvre ton salon pour que d'autres puissent rejoindre"
+            des += "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+            des += "n!voice name <nomduchannel> \nChange le nom du vocal"
+            des += "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+            des += "n!voice limit <nombre> \nFixe une limite du nombre d'utilisateurs maximal pouvant rejoindre le vocal"
+            des += "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+            des += "n!voice permit <@utilisateur> \nPermet à un utilisateur particulier de rejoindre le vocal"
+            des += "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+            des += "n!voice reject <@utilisateur> \nEmpêche un utilisateur de rejoindre votre salon et l'expulse s'il y est déjà"
+            des += "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+            des += "n!voice claim \nPermet de s'approprier le salon vocal si son créateur l'a quitté"
+            
+            embedVar = discord.Embed(
+            title="Commandes",
+            description=des,
+            color=0xF7AF00,
+            timestamp=date,
+            )
+            await message.channel.send(embed=embedVar)
