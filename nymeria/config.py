@@ -20,8 +20,7 @@ class TomlConfig(Config):
         config = toml.load(config_file)
         bot = config["bot"]
         self.bot = bot["bot"]
-        self.id = bot["id"]
         self.token = bot["token"]
-        self.guild = bot["guild"]
-        self.sup_cat = bot["sup_cat"]
-        self.ready_chan = bot["ready_chan"]%
+        self.ready_chan = bot["ready_chan"]
+
+        self.servers = ["server"]

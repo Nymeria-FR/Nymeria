@@ -8,7 +8,7 @@ from mod import Moderation
 from voc import Voice
 from game import Game
 
-class Bot(discord.Client,Moderation):
+class Bot(discord.Client, Moderation, Voice):
     def __init__(self, Myintents):
         self.invites = list()
         discord.Client.__init__(self, intents=Myintents)
@@ -99,7 +99,9 @@ class Bot(discord.Client,Moderation):
         ------
         None
         """
-
+        if message.content.startswith("n!voice"):
+            await self.voiceCommande(message)
+            return
         if message.content.startswith("n!pp"):
             pfp = message.author.avatar_url
             await message.channel.send(pfp)

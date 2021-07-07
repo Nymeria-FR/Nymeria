@@ -1,9 +1,11 @@
 from discord import Intents
 from nymeria import Bot
-from dotenv import load_dotenv
-import os
+from config import TomlConfig
 
-def main(token):
+global config
+config = TomlConfig("../config.toml", "../config.template.toml")
+
+def main():
     Bot_intents = Intents.none()
     Bot_intents.members = True
     Bot_intents.invites = True
@@ -16,7 +18,6 @@ def main(token):
     Bot_intents.guild_reactions = True
     Bot_intents.dm_reactions = True
     Totten = Bot(Bot_intents)
-    Totten.run(token)
+    Totten.run(config.token)
 
-load_dotenv()
-main(os.getenv("TOKEN"))
+main()
