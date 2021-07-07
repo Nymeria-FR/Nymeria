@@ -208,7 +208,8 @@ Tu ne peux pas suprimer de message"""
         return
 
     async def banlist(self,message):
-        guild = self.get_guild(861292008101642281)
+        idy = message.guild.id
+        guild = self.get_guild(idy)
         bans = await guild.bans()
 
         date = datetime.datetime.now(timezone("Europe/Berlin"))

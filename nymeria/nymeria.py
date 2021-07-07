@@ -105,8 +105,14 @@ class Bot(discord.Client, Moderation, Voice):
                 await message.channel.send(reponse)
             return
         if message.content.startswith("n!pp"):
-            pfp = message.author.avatar_url
-            await message.channel.send(pfp)
+            if len(message.mentions) == 0:
+                pp = message.author.avatar_url
+                await message.channel.send(pp)
+                return
+            else:
+                for mention in message.mentions:
+                    pp = mention.avatar_url
+                    await message.channel.send(pp)
 
         if "quoi" in message.content:
             await message.channel.send("feur")

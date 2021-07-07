@@ -22,7 +22,7 @@ class Voice():
     async def voicEventTraitment(self, member, before, after):
         data = self.load()
         if (member.voice is not None and
-                member.voice.channel.id == 797608077800636416):
+                member.voice.channel.id == 861292010057105458):
             if str(member.id) not in data:
                 data[str(member.id)] = [member.name + "'s channel", 0, None]
 
@@ -43,8 +43,8 @@ class Voice():
         elif (before.channel != after.channel and
               before.channel is not None):
             channelExit = self.get_channel(before.channel.id)
-            if (channelExit.id != 797608077800636416 and
-                channelExit.category_id == 797606253479329812 and
+            if (channelExit.id != 861292010057105458 and
+                channelExit.category_id == 861292009627844624 and
                     len(channelExit.members) == 0):
                 await channelExit.delete()
             if str(member.id) in data:
