@@ -24,7 +24,7 @@ class Pokemon:
         def is_correct(m):
             return m.channel == self.channel and m.author == self.author
 
-        await self.channel.send(f"What is this Pokemon ? ")
+        await self.channel.send(f"Quel est ce Pokémon ? ")
         t1 = time()
         await self.channel.send(file=File(self.chemin))
         print(self.name)
@@ -33,9 +33,9 @@ class Pokemon:
         guess = message.content.lower()
         if guess == self.name:
             await self.channel.send(
-                f"{message.author.mention}\n🎉Well done, the Pokemon was {self.name}🎉 (found in {t2-t1:.1f} secondes)"
+                f"{message.author.mention}\n🎉Bien joué, le Pokémon était {self.name}🎉 (trouvé en {t2-t1:.1f} secondes)"
             )
         else:
             await self.channel.send(
-                f"{message.author.mention}\nSorry, the Pokemon was {self.name}"
+                f"{message.author.mention}\nDésolé, le Pokémon était {self.name}"
             )

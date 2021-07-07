@@ -22,16 +22,16 @@ class Capital:
             return m.channel == self.channel and m.author == self.author
 
         await self.channel.send(
-            f"What is the capital of : {self.nom} ? "
+            f"Quelle est la capitale de : {self.nom} ? "
         )
         print(self.capitale)
         message = await client.wait_for(event="message", check=is_correct)
         guess = message.content.lower()
         if guess == self.capitale:
             await self.channel.send(
-                f"{message.author.mention}\n🎉Well done, the capital was {self.capitale}🎉"
+                f"{message.author.mention}\n🎉Bien joué, la capitale était {self.capitale}🎉"
             )
         else:
             await self.channel.send(
-                f"{message.author.mention}\nSorry, the capital was {self.capitale}"
+                f"{message.author.mention}\nDésolé, la capitale était {self.capitale}"
             )

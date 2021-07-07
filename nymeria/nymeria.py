@@ -73,6 +73,7 @@ class Bot(discord.Client, Moderation, Voice):
             color=0xF7AF00,
             timestamp=date,
         )
+        embedVar.set_thumbnail(url=f'{member.avatar_url}')
         await welcome_channel.send(embed=embedVar)
 
     async def on_member_join(self, member):
@@ -113,15 +114,6 @@ class Bot(discord.Client, Moderation, Voice):
                 for mention in message.mentions:
                     pp = mention.avatar_url
                     await message.channel.send(pp)
-
-        if "quoi" in message.content:
-            await message.channel.send("feur")
-
-        if "ping" in message.content:
-            await message.channel.send("pong")
-
-        if "pong" in message.content:
-            await message.channel.send("ping")
         
         if message.content.startswith("n!reload"):
             await self.reload_member_count()
@@ -147,20 +139,23 @@ class Bot(discord.Client, Moderation, Voice):
         if message.content.startswith("n!banlist"):
             await self.banlist(message)
         
+        if message.content.startswith("n!infos"):
+            await self.infos(message)
+
         if(message.content.startswith("n!play")):
             if len(message.content.split(' ')) < 2:
-                await message.channel.send(f"{message.author.mention}\nI do not have a game in parameter")
+                await message.channel.send(f"{message.author.mention}\nJe n'ai pas de jeu en paramètre")
                 return
             game = Game(message, "n!")
             await game.launch(self)
         
         if(message.content.startswith("n!love")):
             if len(message.content.split(' ')) < 2:
-                await message.channel.send(f"{message.author.mention}\nYou didn't give me a person")
+                await message.channel.send(f"{message.author.mention}\nTu ne m'as donné personne en paramètre")
                 return
             mention = message.mentions[0].mention
             love = randint(0,100)
-            await message.channel.send(f"__{love}%__ of love between {message.author.mention} and {mention} ❤")
+            await message.channel.send(f"__{love}%__ d'amour entre {message.author.mention} et {mention} ❤")
         
         if(message.content.startswith("n!emote")):
             await self.emote(message)

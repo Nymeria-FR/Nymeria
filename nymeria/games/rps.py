@@ -24,14 +24,14 @@ class RPS:
             )
 
         while True:
-            respons = await self.channel.send("Rock, Paper or Scissors")
+            respons = await self.channel.send("Pierre, Papier ou Ciseaux ?")
             for emot in self.tab:
                 await respons.add_reaction(emot)
             guess = await client.wait_for(event="reaction_add", check=check)
             guess = str(guess[0].emoji)
             if guess == botplay:
                 await self.channel.send(
-                    f"{self.author.mention}\nEquality, I have chosen {botplay}."
+                    f"{self.author.mention}\nÉgalité, j'avais choisi {botplay}."
                 )
                 botplay = self.tab[randint(0, 2)]
 
@@ -41,12 +41,12 @@ class RPS:
                 or (guess == "✂" and botplay == "📰")
             ):
                 await self.channel.send(
-                    f"{self.author.mention}\nGG, I have chosen {botplay} so you won "
+                    f"{self.author.mention}\nGG, j'avais choisi {botplay} donc tu as gagné "
                 )
                 break
 
             else:
                 await self.channel.send(
-                    f"{self.author.mention}\nSorry, I have chosen {botplay} so you lost "
+                    f"{self.author.mention}\nDésolé, j'avais choisi {botplay} donc tu as perdu "
                 )
                 break

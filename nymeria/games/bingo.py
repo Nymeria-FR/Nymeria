@@ -18,7 +18,7 @@ class Bingo:
             return m.channel == self.channel and m.content.isdigit()
 
         await self.channel.send(
-            f"The bingo begins ! Find a number between 1 and {self.number}"
+            f"Le bingo a commencé ! Trouvez le nombre entre 1 et {self.number}"
         )
         t1 = time()
         rep = -1
@@ -35,5 +35,5 @@ class Bingo:
         t2 = time()
         await guess.add_reaction('✅')
         await self.channel.send(
-            f"{guess.author.mention}\n🎉Well done, the number was {self.inc}🎉 (found in {t2-t1:.1f} secondes)"
+            f"{guess.author.mention}\n🎉Bien joué, le nombre était {self.inc}🎉 (trouvé en {t2-t1:.1f} secondes)"
         )
