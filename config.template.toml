@@ -1,0 +1,12 @@
+[bot]
+bot = true
+token = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+ready_chan = "XXXXXXXXXXXXXXXXXX"
+
+[servers]
+
+    [staf]
+        id = "XXXXXXXXXXXXXXXXXX"
+        cat = "XXXXXXXXXXXXXXXXXX"
+        channel = "XXXXXXXXXXXXXXXXXX"
+        commandes = "XXXXXXXXXXXXXXXXXX"
