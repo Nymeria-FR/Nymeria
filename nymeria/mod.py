@@ -111,6 +111,7 @@ Tu ne peux pas suprimer de message"""
                     color=0xF7AF00,
                     timestamp=datetime.datetime.now(timezone("Europe/Berlin")),
                 )
+                embedVar.set_thumbnail(url=f'{user.avatar_url}')
                 await message.channel.send(embed=embedVar)
                 #await message.channel.send("{}\n L'utilisateur a bien été unban".format(message.author.mention))
             except discord.HTTPException:
