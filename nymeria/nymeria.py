@@ -27,6 +27,9 @@ class Bot(discord.Client, Moderation, Voice):
         None
         """
         print("Load")
+        #activity = discord.Game(name="discord.gg/nymeria", type=3)
+        #await self.change_presence(status=discord.Status.idle, activity=activity)
+        await self.change_presence(activity=discord.Streaming(name='discord.gg/nymeria', url='https://www.twitch.tv/mohasama_'))
         self.__guild_suport = self.get_guild(861292008101642281)
         self.__channel_logs = self.__guild_suport.get_channel(861292008667742213)
         self.guild = self.get_guild(861292008101642281)
@@ -39,6 +42,7 @@ class Bot(discord.Client, Moderation, Voice):
             color=0xF7AF00,
             timestamp=date,
         )
+        embedVar.set_footer(text="Bot Créé par Boubou#9937 & Valorant#6666")
         await self.__channel_logs.send(embed=embedVar)
         await self.reload_member_count()
 
