@@ -1,3 +1,4 @@
+import discord
 from discord import Message, Client, File
 from random import randint
 from time import time
@@ -24,9 +25,17 @@ class Pokemon:
         def is_correct(m):
             return m.channel == self.channel and m.author == self.author
 
-        await self.channel.send(f"Quel est ce Pokémon ? ")
+        embedVar = discord.Embed(
+            title="Quel est ce Pokémon ?",
+            url = "https://discord.gg/nymeria",
+            description="",
+            color=0xF7AF00,
+        )
+        file = discord.File("donnees/images/"+self.pokemon, filename=self.pokemon)
+        embedVar.set_image(url="attachment://"+self.pokemon)
+        await self.channel.send(file = file,embed=embedVar)
+
         t1 = time()
-        await self.channel.send(file=File(self.chemin))
         print(self.name)
         message = await client.wait_for(event="message", check=is_correct)
         t2 = time()

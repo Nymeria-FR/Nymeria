@@ -38,11 +38,13 @@ class Bot(discord.Client, Moderation, Voice):
         date = datetime.datetime.now(timezone("Europe/Berlin"))
         embedVar = discord.Embed(
             title="Ready",
+            url = "https://discord.gg/nymeria",
             description=f"Logged as {self.user}",
             color=0xF7AF00,
             timestamp=date,
         )
-        embedVar.set_footer(text="Bot Créé par Boubou#9937 & Valorant#6666")
+        embedVar.set_author(name="Boubou", url="https://twitter.com/BoubouSW",icon_url="https://cdn.discordapp.com/avatars/303935152071901184/cb7644ce9aeb0cd703bb4dd29ff2e52a.webp?size=1024")
+        embedVar.set_image(url="https://cdn.discordapp.com/attachments/861292008910749705/862528074373529600/logo.gif")
         await self.__channel_logs.send(embed=embedVar)
         await self.reload_member_count()
 
@@ -167,6 +169,18 @@ class Bot(discord.Client, Moderation, Voice):
             love = randint(0,100)
             await message.channel.send(f"__{love}%__ d'amour entre {message.author.mention} et {mention} ❤")
         
+        if(message.content.startswith("n!camion")):
+            await message.delete()
+            msg = message.content.split(' ')[1:]
+            text = " ".join(msg)
+            await message.channel.send(f"""
+──────▄▌▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀▀▀▌
+───▄▄██▌█ BEEP BEEP
+▄▄▄▌▐██▌█ {text}
+███████▌█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄​▄▄▄▄▄▄▌
+ ▀(@)▀▀▀▀▀▀▀(@)(@)▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀(@)▀
+            """)
+
         if(message.content.startswith("n!emote")):
             await self.emote(message)
 
@@ -193,7 +207,7 @@ class Bot(discord.Client, Moderation, Voice):
 
             def fortnite_tracker_api(platform, nickname):
                 URL = 'https://api.fortnitetracker.com/v1/profile/' + platform + '/' + nickname
-                req = requests.get(URL, headers={"TRN-Api-Key": "245ff269-8694-4f30-866c-eb1867cda934"})
+                req = requests.get(URL, headers={"TRN-Api-Key": config.token_ftn})
 
                 if req.status_code == 200:
                     try:

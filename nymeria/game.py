@@ -6,6 +6,7 @@ from games.pokemon import Pokemon
 from games.rps import RPS
 from games.coin import Coin
 from games.pourcb import Pourcb
+from games.pendu import Pendu
 
 class Game():
     """
@@ -34,4 +35,7 @@ class Game():
         if(self.game == "pourcb"):
             pourcb = Pourcb(self.message)
             await pourcb.launch(client)
+        if(self.game == "pendu"):
+            pendu = Pendu(self.message)
+            await pendu.launch(client)
         return   
