@@ -159,3 +159,22 @@ class Bot(discord.Client, Moderation, Voice):
         
         if(message.content.startswith("n!emote")):
             await self.emote(message)
+
+        if("juif" in message.content):
+            await self.ban_word(message)
+        
+        if("negro" in message.content):
+            await self.ban_word(message)
+        
+        if("nez gros" in message.content):
+            await self.ban_word(message)
+        
+        if("nazi" in message.content):
+            await self.ban_word(message)
+        
+        if("negre" in message.content):
+            await self.ban_word(message)
+        
+        if("pd" in message.content):
+            await self.ban_word(message)
+            
