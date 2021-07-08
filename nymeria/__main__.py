@@ -15,7 +15,7 @@ def main():
     Bot_intents.reactions = True
     Bot_intents.guild_reactions = True
     Bot_intents.dm_reactions = True
-    Totten = Bot(Bot_intents)
-    Totten.run(config.token)
+    Nymeria = Bot(Bot_intents)
+    Nymeria.run(config.token)
 
 main()

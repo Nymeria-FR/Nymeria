@@ -1,6 +1,7 @@
 [bot]
 bot = true
 token = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+token_ftn = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"  
 ready_chan = "XXXXXXXXXXXXXXXXXX"
 json_data_base = "XXX"
 

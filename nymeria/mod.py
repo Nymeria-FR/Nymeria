@@ -279,7 +279,6 @@ Tu ne peux pas suprimer de message"""
         return
 
     async def banlist(self,message):
-        await message.delete()
         idy = message.guild.id
         guild = self.get_guild(idy)
         bans = await guild.bans()
