@@ -20,6 +20,7 @@ class Pendu:
     async def launch(self, client):
         print(self.mot)
         longueur = "**Devine :** " + '‿ ' * int(len(self.mot))
+        reponse = '‿' * int(len(self.mot))
         await self.channel.send(longueur)
         essais = 1
 
@@ -31,7 +32,7 @@ class Pendu:
         while (essais < 7):
             guess = await client.wait_for(event="message",check=is_correct)
             lettre = split(guess.content).upper()
-            if longueur == self.mot:
+            if reponse == self.mot:
                 await self.channel.send("Gagné !")
                 break
             if lettre in self.mot:
