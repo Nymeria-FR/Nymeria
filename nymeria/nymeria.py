@@ -1,6 +1,7 @@
 import discord
 import datetime
 from discord import File
+from discord import Button, Select, SelectOption
 from pytz import timezone
 from random import randint
 from config import TomlConfig, config
@@ -31,21 +32,22 @@ class Bot(discord.Client, Moderation, Voice):
         #await self.change_presence(status=discord.Status.idle, activity=activity)
         await self.change_presence(activity=discord.Streaming(name='discord.gg/nymeria', url='https://www.twitch.tv/mohasama_'))
         self.__guild_suport = self.get_guild(861292008101642281)
-        self.__channel_logs = self.__guild_suport.get_channel(861292008667742213)
+        self.__channel_logs = self.__guild_suport.get_channel(861292010057105466)
         self.guild = self.get_guild(861292008101642281)
         self.invites = await self.guild.invites()
 
         date = datetime.datetime.now(timezone("Europe/Berlin"))
         embedVar = discord.Embed(
             title="Ready",
-            url = "https://discord.gg/nymeria",
+            url = "http://www.nymeria.org/",
             description=f"Logged as {self.user}",
             color=0xF7AF00,
             timestamp=date,
         )
         embedVar.set_author(name="Boubou", url="https://twitter.com/BoubouSW",icon_url="https://cdn.discordapp.com/avatars/303935152071901184/cb7644ce9aeb0cd703bb4dd29ff2e52a.webp?size=1024")
-        embedVar.set_image(url="https://cdn.discordapp.com/attachments/861292008910749705/862528074373529600/logo.gif")
-        await self.__channel_logs.send(embed=embedVar)
+        embedVar.set_thumbnail(url="https://cdn.discordapp.com/attachments/861292008910749705/862528074373529600/logo.gif")
+        #embedVar.set_image(url="https://cdn.discordapp.com/attachments/861292008910749705/862528074373529600/logo.gif")
+        await self.__channel_logs.send(embed=embedVar,components = [Button(label = "test")])
         await self.reload_member_count()
 
     async def on_invite_create(self, invite):
@@ -76,6 +78,7 @@ class Bot(discord.Client, Moderation, Voice):
         date = datetime.datetime.now(timezone("Europe/Berlin"))
         embedVar = discord.Embed(
             title="Bienvenue !",
+            url = "http://www.nymeria.org/",
             description="→ Oh ! {} vient de nous rejoindre ! ← \n \n・Souhaitez lui la bienvenue ! \n・Pense à prendre tes rôles dans {} \n \n・Tu as utilisé l'invitation de **{}** ".format(
                 member.mention, rules_channel.mention, inviter.name
             ),

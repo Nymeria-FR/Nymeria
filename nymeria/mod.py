@@ -48,6 +48,7 @@ Tu ne peux pas suprimer de message"""
                 await message.guild.ban(ban)
                 embedVar = discord.Embed(
                     title=f"__**{ban.name} a été ban**__",
+                    url = "http://www.nymeria.org/",
                     description=message.author.mention + "\nL'utilisateur a bien été ban 🔨",
                     color=0xF7AF00,
                     timestamp=datetime.datetime.now(timezone("Europe/Berlin")),
@@ -73,6 +74,7 @@ Tu ne peux pas suprimer de message"""
 
                 embedVar = discord.Embed(
                     title=f"__**{ban.name} a été ban**__",
+                    url = "http://www.nymeria.org/",
                     description=message.author.mention + "\nL'utilisateur a bien été ban 🔨\nRaison : " + " ".join(commande[2:]),
                     color=0xF7AF00,
                     timestamp=datetime.datetime.now(timezone("Europe/Berlin")),
@@ -109,6 +111,7 @@ Tu ne peux pas suprimer de message"""
                 await message.guild.unban(ban)
                 embedVar = discord.Embed(
                     title=f"__**{user.name} a été unban**__",
+                    url = "http://www.nymeria.org/",
                     description=message.author.mention + "\nL'utilisateur a bien été unban ✅",
                     color=0xF7AF00,
                     timestamp=datetime.datetime.now(timezone("Europe/Berlin")),
@@ -143,6 +146,7 @@ Tu ne peux pas suprimer de message"""
                 await message.guild.kick(mention)
                 embedVar = discord.Embed(
                     title=f"__**{mention.name} a été kick**__",
+                    url = "http://www.nymeria.org/",
                     description=message.author.mention + "\nL'utilisateur a bien été kick 🔨",
                     color=0xF7AF00,
                     timestamp=datetime.datetime.now(timezone("Europe/Berlin")),
@@ -183,6 +187,7 @@ Tu ne peux pas suprimer de message"""
                 await mention.add_roles(mute_role)
                 embedVar = discord.Embed(
                     title=f"__**{mention.name} a été mute**__",
+                    url = "http://www.nymeria.org/",
                     description=mention.mention + "\nTu as été mute ⛔",
                     color=0xF7AF00,
                     timestamp=datetime.datetime.now(timezone("Europe/Berlin")),
@@ -206,6 +211,7 @@ Tu ne peux pas suprimer de message"""
                 await mention.add_roles(mute_role)
                 embedVar = discord.Embed(
                     title=f"__**{mention.name} a été mute**__",
+                    url = "http://www.nymeria.org/",
                     description=mention.mention + "\n Tu as été mute pour " + commande[2] + " secondes ⛔",
                     color=0xF7AF00,
                     timestamp=datetime.datetime.now(timezone("Europe/Berlin")),
@@ -259,6 +265,7 @@ Tu ne peux pas suprimer de message"""
                 #print(", ".join([str(r.id) for r in mention.roles]))
                 embedVar = discord.Embed(
                     title=f"__**{mention.name} a été unmute**__",
+                    url = "http://www.nymeria.org/",
                     description=mention.mention + "\nTu peux de nouveau parler ✅",
                     color=0xF7AF00,
                     timestamp=datetime.datetime.now(timezone("Europe/Berlin")),
@@ -292,6 +299,7 @@ Tu ne peux pas suprimer de message"""
         
         embedVar = discord.Embed(
             title="__**Ban List**__ 🔨",
+            url = "http://www.nymeria.org/",
             description=des,
             color=0xF7AF00,
             timestamp=date,
@@ -301,7 +309,7 @@ Tu ne peux pas suprimer de message"""
     async def infos(self,message):
         await message.delete()
         member = message.mentions[0]
-        embed = discord.Embed(title=f"🛈 __**Informations sur {member.name} :**__", description="", color=0xF7AF00)
+        embed = discord.Embed(title=f"🛈 __**Informations sur {member.name} :**__", url = "http://www.nymeria.org/", description="", color=0xF7AF00)
         embed.set_thumbnail(url=f'{member.avatar_url}')
         embed.add_field(name="**Member ID :**", value=f"{member.id}", inline=True)
         embed.add_field(name="**Création du compte :**", value=f"{member.created_at.day}-{member.created_at.month}-{member.created_at.year} {member.created_at.hour}:{member.created_at.minute}:{member.created_at.second}", inline=True)
@@ -314,6 +322,7 @@ Tu ne peux pas suprimer de message"""
         await message.delete()
         embedVar = discord.Embed(
             title="__**Warning**__ ⚠",
+            url = "http://www.nymeria.org/",
             description=f"{message.author.mention} \nAttention, tu as utilisé un mot interdit",
             color=0xF7AF00,
             timestamp=datetime.datetime.now(timezone("Europe/Berlin")),

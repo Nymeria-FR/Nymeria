@@ -7,7 +7,6 @@ let
       pillow
       toml
       python-dotenv
-
     ]);
 in stdenv.mkDerivation {
   name = "nymeria-env";
