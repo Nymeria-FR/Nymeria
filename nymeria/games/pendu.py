@@ -1,8 +1,10 @@
 import discord
+import csv
+import asyncio
 from discord import Message, Client, File
 from random import randint
 from time import time
-import csv
+
 
 class Pendu:
     """
@@ -15,12 +17,12 @@ class Pendu:
         table = f.readlines()
         f.close()
         n = randint(1,len(table))
-        self.mot = table[n]
+        self.mot = table[n].replace('\n', '')
 
     async def launch(self, client):
         print(self.mot)
-        longueur = "**Devine :** " + '‿' * (int(len(self.mot)) - 1)
-        reponse = '‿' * (int(len(self.mot)) - 1) 
+        longueur = "**Devine :** " + '‿' * (int(len(self.mot)))
+        reponse = '‿' * (int(len(self.mot))) 
         await self.channel.send(longueur)
         essais = 1
 
@@ -35,7 +37,7 @@ class Pendu:
                     pos.append(i)
             return pos
 
-        while (essais < 7):
+        while (essais <= 6):
             guess = await client.wait_for(event="message",check=is_correct)
             lettre = split(guess.content).upper()
             
@@ -45,21 +47,17 @@ class Pendu:
                 for i in range(len(tab)):
                     caracteres[tab[i]] = lettre
                 reponse = "".join(caracteres)
-                await self.channel.send("**Lettre donnée : **" + lettre)
-                await self.channel.send("**Devine :** " + reponse)
-
-                print(reponse.upper(),(self.mot).upper())
-
+                await self.channel.send(f"**Lettre donnée : **{lettre}\n**Devine :** {reponse}")
                 if reponse.upper() == (self.mot).upper():
                     await self.channel.send("Gagné !")
                     break
 
             else:
-                await self.channel.send("**Lettre donnée : **" + lettre)
-                await self.channel.send(f"**{self.author.name}**, raté ! Nb d'erreurs : {essais}/6")
 
                 if essais == 1:
-                    await self.channel.send("""```
+                    await self.channel.send(f"""**Lettre donnée : **{lettre}
+**{self.author.name}**, raté ! Nb d'erreurs : {essais}/6
+```
   _______
  |/      |
  |      
@@ -72,7 +70,9 @@ _|___
 """)
 
                 if essais == 2:
-                    await self.channel.send("""```
+                    await self.channel.send(f"""**Lettre donnée : **{lettre}
+**{self.author.name}**, raté ! Nb d'erreurs : {essais}/6
+```
   _______
  |/      |
  |      (_)
@@ -84,7 +84,9 @@ _|___
 ```
 """)
                 if essais == 3:
-                    await self.channel.send("""```
+                    await self.channel.send(f"""**Lettre donnée : **{lettre}
+**{self.author.name}**, raté ! Nb d'erreurs : {essais}/6
+```
   _______
  |/      |
  |      (_)
@@ -97,7 +99,9 @@ _|___
 """)
 
                 if essais == 4:
-                    await self.channel.send("""```
+                    await self.channel.send(f"""**Lettre donnée : **{lettre}
+**{self.author.name}**, raté ! Nb d'erreurs : {essais}/6
+```
   _______
  |/      |
  |      (_)
@@ -109,32 +113,66 @@ _|___
 ```
 """)
                 if essais == 5:
-                    await self.channel.send("""```
+                    await self.channel.send(f"""**Lettre donnée : **{lettre}
+**{self.author.name}**, raté ! Nb d'erreurs : {essais}/6
+```
   _______
  |/      |
  |      (_)
  |      \|/
  |       |
- |      //
+ |      /
  |
 _|___
 ```
 """)
 
                 if essais == 6:
-                    await self.channel.send("""```
+                    perdu = await self.channel.send(f"""**Lettre donnée : **{lettre}
+**{self.author.name}**, raté ! Nb d'erreurs : {essais}/6
+```
   _______
  |/      |
  |      (x)
  |      \|/
  |       |
- |      //
+ |      / \\
  |
 _|___
 ```
+Perdu ! Le mot était {self.mot}
 """)
-
-
+                    
+                
+                    await asyncio.sleep(1)
+                    await perdu.edit(content=f"""**Lettre donnée : **{lettre}
+**{self.author.name}**, raté ! Nb d'erreurs : {essais}/6
+```
+  _______
+ |/      |
+ |      (x)
+ |      _|_
+ |       |
+ |      / \\
+ |
+_|___
+```
+Perdu ! Le mot était {self.mot}
+""")
+                    await asyncio.sleep(1)
+                    await perdu.edit(content=f"""**Lettre donnée : **{lettre}
+**{self.author.name}**, raté ! Nb d'erreurs : {essais}/6
+```
+  _______
+ |/      |
+ |      (x)
+ |       |
+ |      /|\\
+ |      / \\
+ |
+_|___
+```
+Perdu ! Le mot était {self.mot}
+""")
+                    break
                 essais += 1
-        
-        await self.channel.send(f"Perdu ! Le mot était {self.mot}")
