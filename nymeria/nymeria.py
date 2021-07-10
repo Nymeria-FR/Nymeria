@@ -1,7 +1,7 @@
 import discord
 import datetime
 from discord import File
-from discord import Button, Select, SelectOption
+#from discord import Button, Select, SelectOption
 from pytz import timezone
 from random import randint
 from config import TomlConfig, config
@@ -47,7 +47,7 @@ class Bot(discord.Client, Moderation, Voice):
         embedVar.set_author(name="Boubou", url="https://twitter.com/BoubouSW",icon_url="https://cdn.discordapp.com/avatars/303935152071901184/cb7644ce9aeb0cd703bb4dd29ff2e52a.webp?size=1024")
         embedVar.set_thumbnail(url="https://cdn.discordapp.com/attachments/861292008910749705/862528074373529600/logo.gif")
         #embedVar.set_image(url="https://cdn.discordapp.com/attachments/861292008910749705/862528074373529600/logo.gif")
-        await self.__channel_logs.send(embed=embedVar,components = [Button(label = "test")])
+        await self.__channel_logs.send(embed=embedVar)
         await self.reload_member_count()
 
     async def on_invite_create(self, invite):
