@@ -11,3 +11,5 @@ json_data_base = "XXX"
         id = "XXXXXXXXXXXXXXXXXX"
         cat = "XXXXXXXXXXXXXXXXXX"
         channel = "XXXXXXXXXXXXXXXXXX"
+        commandes = "XXXXXXXXXXXXXXXXXX"
+
