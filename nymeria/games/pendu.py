@@ -73,6 +73,7 @@ class Pendu:
  |
 _|___
 ```
+**Devine :** {reponse}
 """)
 
                 if essais == 2:
@@ -88,6 +89,7 @@ _|___
  |
 _|___
 ```
+**Devine :** {reponse}
 """)
                 if essais == 3:
                     await self.channel.send(f"""**Lettre donnée : **{lettre}
@@ -102,6 +104,7 @@ _|___
  |
 _|___
 ```
+**Devine :** {reponse}
 """)
 
                 if essais == 4:
@@ -117,6 +120,7 @@ _|___
  |
 _|___
 ```
+**Devine :** {reponse}
 """)
                 if essais == 5:
                     await self.channel.send(f"""**Lettre donnée : **{lettre}
@@ -131,6 +135,7 @@ _|___
  |
 _|___
 ```
+**Devine :** {reponse}
 """)
 
                 if essais == 6:

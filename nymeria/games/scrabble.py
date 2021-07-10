@@ -146,7 +146,7 @@ class Scrabble:
             try:
                 #on demande à l'utilisateur de saisir une longueur, que l'on
                 #convertit en entier
-                await self.channel.send("Entrer une longueur de mot entre 1 et " + str(lmax) + ":")
+                await self.channel.send(f"**{self.author.name}**, entre une longueur de mot entre 1 et " + str(lmax) + ":")
                 l = await client.wait_for(event="message", check=is_correct)
                 l = int(l.content)
                 if l > 0 and l <= lmax: #Si elle est dans l'intervalle, on définit
@@ -171,8 +171,8 @@ class Scrabble:
         #On trie les lettres du mot
         mot_trie = trie_chaine(mot)
         #On demande à l'utilisateur de saisir sa solution
-        await self.channel.send("Votre anagramme: " + mot_melange)
-        await self.channel.send("Votre solution:")
+        await self.channel.send(f"**{self.author.name}**, ton anagramme: " + mot_melange)
+        await self.channel.send("Donne ta solution:")
         sol = await client.wait_for(event="message", check=is_correct2)
         sol = (sol.content).upper()
         #On trie le mot saisi par l'utilisateur
@@ -185,14 +185,14 @@ class Scrabble:
             if len(sol) == len(mot):
                 #Si la solution proposée et le mot à deviner
                 #On la même longueur: champion!
-                await self.channel.send("C'est une solution exacte")
+                await self.channel.send(f"**{self.author.name}**, bien joué, c'est une solution exacte !")
             else:
                 #Sinon, on a une solution partielle
                 #On affiche les meilleures réponses possible
-                await self.channel.send("C'est une solution partielle")
-                await self.channel.send("Le meilleur anagramme possible était:")
+                await self.channel.send(f"**{self.author.name}**, c'est une solution partielle")
+                await self.channel.send("Les meilleurs anagrammes possibles étaient:")
                 for m in minf_idx[mot_trie]:
                     await self.channel.send("> " + m)
             return
         #Dans tous les autres cas, c'est une mauvaise réponse
-        await self.channel.send(f"Mauvaise réponse, une des réponses était {mot}")
+        await self.channel.send(f"Mauvaise réponse, la meilleure réponse possible était {mot}")
