@@ -7,6 +7,8 @@ from games.rps import RPS
 from games.coin import Coin
 from games.pourcb import Pourcb
 from games.pendu import Pendu
+from games.scrabble import Scrabble
+
 
 class Game():
     """
@@ -38,4 +40,7 @@ class Game():
         if(self.game == "pendu"):
             pendu = Pendu(self.message)
             await pendu.launch(client)
+        if(self.game == "scrabble"):
+            scrabble = Scrabble(self.message)
+            await scrabble.launch(client)
         return   

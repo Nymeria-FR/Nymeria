@@ -1,4 +1,5 @@
 import discord
+import asyncio
 import datetime
 from discord import File
 #from discord import Button, Select, SelectOption
@@ -186,6 +187,15 @@ class Bot(discord.Client, Moderation, Voice):
 
         if(message.content.startswith("n!emote")):
             await self.emote(message)
+        
+        if(message.content.startswith("n!compte")):
+            k = 1
+            nb = await message.channel.send(k)
+            while True:
+                k += 1
+                await asyncio.sleep(1)
+                await nb.edit(content=k)
+
 
         if("juif" in message.content):
             await self.ban_word(message)
