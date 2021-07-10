@@ -177,12 +177,220 @@ class Bot(discord.Client, Moderation, Voice):
             await message.delete()
             msg = message.content.split(' ')[1:]
             text = " ".join(msg)
-            await message.channel.send(f"""
+            cam = await message.channel.send(f"""
+──────────────────▄▌▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀▀▀▌
+───────────────▄▄██▌█ BEEP BEEP
+────────────▄▄▄▌▐██▌█ {text}
+────────────███████▌█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄​▄▄▄▄▄▄▌
+────────────▀(@)▀▀▀▀▀▀▀(@)(@)▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+────────────────▄▌▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀▀▀▌
+─────────────▄▄██▌█ BEEP BEEP
+──────────▄▄▄▌▐██▌█ {text}
+──────────███████▌█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄​▄▄▄▄▄▄▌
+──────────▀(@)▀▀▀▀▀▀▀(@)(@)▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+──────────────▄▌▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀▀▀▌
+───────────▄▄██▌█ BEEP BEEP
+────────▄▄▄▌▐██▌█ {text}
+────────███████▌█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄​▄▄▄▄▄▄▌
+────────▀(@)▀▀▀▀▀▀▀(@)(@)▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+────────────▄▌▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀▀▀▌
+─────────▄▄██▌█ BEEP BEEP
+──────▄▄▄▌▐██▌█ {text}
+──────███████▌█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄​▄▄▄▄▄▄▌
+──────▀(@)▀▀▀▀▀▀▀(@)(@)▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+──────────▄▌▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀▀▀▌
+───────▄▄██▌█ BEEP BEEP
+────▄▄▄▌▐██▌█ {text}
+────███████▌█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄​▄▄▄▄▄▄▌
+────▀(@)▀▀▀▀▀▀▀(@)(@)▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+────────▄▌▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀▀▀▌
+─────▄▄██▌█ BEEP BEEP
+──▄▄▄▌▐██▌█ {text}
+──███████▌█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄​▄▄▄▄▄▄▌
+──▀(@)▀▀▀▀▀▀▀(@)(@)▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
 ──────▄▌▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀▀▀▌
 ───▄▄██▌█ BEEP BEEP
 ▄▄▄▌▐██▌█ {text}
 ███████▌█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄​▄▄▄▄▄▄▌
- ▀(@)▀▀▀▀▀▀▀(@)(@)▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀(@)▀
+▀(@)▀▀▀▀▀▀▀(@)(@)▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+────▄▌▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀▀▀▌
+─▄▄██▌█ BEEP BEEP
+▄▌▐██▌█ {text}
+█████▌█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄​▄▄▄▄▄▄▌
+@)▀▀▀▀▀▀▀(@)(@)▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+────▄▌▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀▀▀▌
+─▄▄██▌█ BEEP BEEP
+▄▌▐██▌█ {text}
+█████▌█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄​▄▄▄▄▄▄▌
+@)▀▀▀▀▀▀▀(@)(@)▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+──▄▌▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀▀▀▌
+▄██▌█ BEEP BEEP
+▐██▌█ {text}
+███▌█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄​▄▄▄▄▄▄▌
+▀▀▀▀▀▀▀(@)(@)▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+▄▌▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀▀▀▌
+█▌█ BEEP BEEP
+█▌█ {text}
+█▌█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄​▄▄▄▄▄▄▌
+▀▀▀▀▀(@)(@)▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀▀▀▌
+█ BEEP BEEP
+█ {text}
+█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄​▄▄▄▄▄▄▌
+▀▀▀(@)(@)▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀▀▀▌
+BEEP BEEP
+{text}
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄​▄▄▄▄▄▄▌
+▀(@)(@)▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀▀▀▌
+EP BEEP
+{text}
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄​▄▄▄▄▄▄▌
+@)(@)▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀▀▀▌
+ BEEP
+{text}
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄​▄▄▄▄▄▄▌
+(@)▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀▀▀▌
+EEP
+{text}
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄​▄▄▄▄▄▄▌
+)▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀▀▀▌
+P
+{text}
+▄▄▄▄▄▄▄▄▄▄▄▄​▄▄▄▄▄▄▌
+▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+▀▀▀▀▀▀▀▀▀▀​▀▀▀▀▀▀▌
+
+{text}
+▄▄▄▄▄▄▄▄▄▄​▄▄▄▄▄▄▌
+▀▀▀▀▀▀▀▀▀▀​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+▀▀▀▀▀▀▀▀​▀▀▀▀▀▀▌
+
+{text}
+▄▄▄▄▄▄▄▄​▄▄▄▄▄▄▌
+▀▀▀▀▀▀▀▀​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+▀▀▀▀▀▀​▀▀▀▀▀▀▌
+
+{text}
+▄▄▄▄▄▄​▄▄▄▄▄▄▌
+▀▀▀▀▀▀​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+▀▀▀▀​▀▀▀▀▀▀▌
+
+{text}
+▄▄▄▄​▄▄▄▄▄▄▌
+▀▀▀▀​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+▀▀​▀▀▀▀▀▀▌
+
+{text}
+▄▄​▄▄▄▄▄▄▌
+▀▀​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+​▀▀▀▀▀▀▌
+
+
+​▄▄▄▄▄▄▌
+​▀▀▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+​▀▀▀▀▌
+
+
+​▄▄▄▄▌
+​▀▀(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+​▀▀▌
+
+
+​▄▄▌
+​(@)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+​▌
+
+
+​▌
+​)▀
+            """)
+            await asyncio.sleep(1)
+            await cam.edit(content=f"""
+​
+
+
+​
+​
             """)
 
         if(message.content.startswith("n!emote")):
