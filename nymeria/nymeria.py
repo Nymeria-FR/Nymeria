@@ -10,14 +10,12 @@ import requests
 
 
 from mod import Moderation
-from voc import Voice
 from game import Game
 
-class Bot(discord.Client, Moderation, Voice):
+class Bot(discord.Client, Moderation):
     def __init__(self, Myintents):
         self.invites = list()
         discord.Client.__init__(self, intents=Myintents)
-        Voice.__init__(self)
 
     async def on_ready(self):
         """
@@ -36,6 +34,11 @@ class Bot(discord.Client, Moderation, Voice):
         self.__channel_logs = self.__guild_suport.get_channel(861292010057105466)
         self.guild = self.get_guild(861292008101642281)
         self.invites = await self.guild.invites()
+
+        self.nymeria = self.get_guild(558023940518313987)
+        self.nymeria_staff = self.get_guild(861292008101642281)
+        self.nymeria_rp = self.get_guild(488351106355691530)
+        self.nymeria_mc = self.get_guild(863181049186353162)
 
         date = datetime.datetime.now(timezone("Europe/Berlin"))
         embedVar = discord.Embed(
@@ -74,8 +77,22 @@ class Bot(discord.Client, Moderation, Voice):
 
     async def welcome_message(self, member, inviter):
 
-        welcome_channel: discord.TextChannel = self.get_channel(861292008910749705)
-        rules_channel: discord.TextChannel = self.get_channel(861292008910749698)
+        if self.nymeria.id == member.guild.id:
+            welcome_channel: discord.TextChannel = self.get_channel(783018698997891142)
+            rules_channel: discord.TextChannel = self.get_channel(755918785147568262)
+
+        if self.nymeria_staff.id == member.guild.id:
+            welcome_channel: discord.TextChannel = self.get_channel(861292008910749705)
+            rules_channel: discord.TextChannel = self.get_channel(863066907150516244)
+        
+        if self.nymeria_rp.id == member.guild.id:
+            welcome_channel: discord.TextChannel = self.get_channel(863138728092368938)
+            rules_channel: discord.TextChannel = self.get_channel(863147538416271371)
+        
+        if self.nymeria_mc.id == member.guild.id:
+            welcome_channel: discord.TextChannel = self.get_channel(863829696457080832)
+            rules_channel: discord.TextChannel = self.get_channel(863181049650610211)
+
         date = datetime.datetime.now(timezone("Europe/Berlin"))
         embedVar = discord.Embed(
             title="Bienvenue !",
@@ -113,11 +130,7 @@ class Bot(discord.Client, Moderation, Voice):
         ------
         None
         """
-        if message.content.startswith("n!voice"):
-            reponse = await self.voiceCommande(message)
-            if type(reponse) != None and reponse != "":
-                await message.channel.send(reponse)
-            return
+        
         if message.content.startswith("n!pp"):
             if len(message.mentions) == 0:
                 pp = message.author.avatar_url
@@ -392,9 +405,6 @@ P
 ​
 ​
             """)
-
-        if(message.content.startswith("n!emote")):
-            await self.emote(message)
         
         if(message.content.startswith("n!compte")):
             k = 1
