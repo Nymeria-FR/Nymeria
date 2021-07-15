@@ -169,9 +169,9 @@ Tu ne peux pas suprimer de message"""
     async def mute(self,message):
         await message.delete()
         for guild in self.guilds:
-            if guild.id == 861292008101642281:
+            if guild.id == 558023940518313987:
                 for role in guild.roles:
-                    if role.id == 861292008123793460:
+                    if role.id == 865322331039727616:
                         mute_role = role
         
         commande = message.content.split(" ")
@@ -246,9 +246,9 @@ Tu ne peux pas suprimer de message"""
     async def unmute(self,message):
         await message.delete()
         for guild in self.guilds:
-            if guild.id == 861292008101642281:
+            if guild.id == 558023940518313987:
                 for role in guild.roles:
-                    if role.id == 861292008123793460:
+                    if role.id == 865322331039727616:
                         mute_role = role
         
         commande = message.content.split(" ")

@@ -1,4 +1,5 @@
 import os, toml
+import shutil
 
 class Config:
     def get_path(self, name):
