@@ -171,7 +171,7 @@ Tu ne peux pas suprimer de message"""
         for guild in self.guilds:
             if guild.id == 558023940518313987:
                 for role in guild.roles:
-                    if role.id == 865322331039727616:
+                    if role.id == 755909610803560559:
                         mute_role = role
         
         commande = message.content.split(" ")
@@ -248,7 +248,7 @@ Tu ne peux pas suprimer de message"""
         for guild in self.guilds:
             if guild.id == 558023940518313987:
                 for role in guild.roles:
-                    if role.id == 865322331039727616:
+                    if role.id == 755909610803560559:
                         mute_role = role
         
         commande = message.content.split(" ")
