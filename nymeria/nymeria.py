@@ -41,7 +41,7 @@ class Bot(discord.Client, Moderation, Voice):
         embedVar = discord.Embed(
             title="Ready",
             url = "http://www.nymeria.org/",
-            description=f"Logged as {self.user}",
+            description=(f"Logged as {self.user}"),
             color=0xF7AF00,
             timestamp=date,
         )
