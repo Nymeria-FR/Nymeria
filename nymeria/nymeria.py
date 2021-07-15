@@ -40,6 +40,11 @@ class Bot(discord.Client, Moderation):
         self.nymeria_rp = self.get_guild(488351106355691530)
         self.nymeria_mc = self.get_guild(863181049186353162)
 
+        self.invites_n = await self.nymeria.invites()
+        self.invites_ns = await self.nymeria_staff.invites()
+        self.invites_nrp = await self.nymeria_rp.invites()
+        self.invites_nmc = await self.nymeria_mc.invites()
+
         date = datetime.datetime.now(timezone("Europe/Berlin"))
         embedVar = discord.Embed(
             title="Ready",
@@ -56,15 +61,44 @@ class Bot(discord.Client, Moderation):
 
     async def on_invite_create(self, invite):
         self.invites = await self.guild.invites()
+        self.invites_n = await self.nymeria.invites()
+        self.invites_ns = await self.nymeria_staff.invites()
+        self.invites_nrp = await self.nymeria_rp.invites()
+        self.invites_nmc = await self.nymeria_mc.invites()
 
     async def on_invite_delete(self, invite):
         self.invites = await self.guild.invites()   
+        self.invites_n = await self.nymeria.invites()
+        self.invites_ns = await self.nymeria_staff.invites()
+        self.invites_nrp = await self.nymeria_rp.invites()
+        self.invites_nmc = await self.nymeria_mc.invites()
 
-    async def get_inviter(self):
-        new_invite = await self.guild.invites()
-        for i in range(len(new_invite)):
-            if new_invite[i].uses > self.invites[i].uses:
-                return new_invite[i].inviter
+    async def get_inviter(self,member):
+
+        if self.nymeria.id == member.guild.id:
+            new_invite = await self.nymeria.invites()
+            for i in range(len(new_invite)):
+                if new_invite[i].uses > self.invites_n[i].uses:
+                    return new_invite[i].inviter
+
+        if self.nymeria_staff.id == member.guild.id:
+            new_invite = await self.guild.invites()
+            for i in range(len(new_invite)):
+                if new_invite[i].uses > self.invites_ns[i].uses:
+                    return new_invite[i].inviter    
+        
+        if self.nymeria_rp.id == member.guild.id:
+            new_invite = await self.guild.invites()
+            for i in range(len(new_invite)):
+                if new_invite[i].uses > self.invites_nrp[i].uses:
+                    return new_invite[i].inviter
+        
+        if self.nymeria_mc.id == member.guild.id:
+            new_invite = await self.guild.invites()
+            for i in range(len(new_invite)):
+                if new_invite[i].uses > self.invites_nmc[i].uses:
+                    return new_invite[i].inviter
+
 
     async def reload_member_count(self):
         count_channel: discord.VoiceChannel = self.get_channel(
@@ -78,6 +112,7 @@ class Bot(discord.Client, Moderation):
     async def welcome_message(self, member, inviter):
 
         if self.nymeria.id == member.guild.id:
+            print("je suis la")
             welcome_channel: discord.TextChannel = self.get_channel(783018698997891142)
             rules_channel: discord.TextChannel = self.get_channel(755918785147568262)
 
@@ -93,21 +128,34 @@ class Bot(discord.Client, Moderation):
             welcome_channel: discord.TextChannel = self.get_channel(863829696457080832)
             rules_channel: discord.TextChannel = self.get_channel(863181049650610211)
 
-        date = datetime.datetime.now(timezone("Europe/Berlin"))
-        embedVar = discord.Embed(
-            title="Bienvenue !",
-            url = "http://www.nymeria.org/",
-            description="→ Oh ! {} vient de nous rejoindre ! ← \n \n・Souhaitez lui la bienvenue ! \n・Pense à prendre tes rôles dans {} \n \n・Tu as utilisé l'invitation de **{}** ".format(
-                member.mention, rules_channel.mention, inviter.name
-            ),
-            color=0xF7AF00,
-            timestamp=date,
-        )
+        if inviter != None:
+            date = datetime.datetime.now(timezone("Europe/Berlin"))
+            embedVar = discord.Embed(
+                title="Bienvenue !",
+                url = "http://www.nymeria.org/",
+                description="→ Oh ! {} vient de nous rejoindre ! ← \n \n・Souhaitez lui la bienvenue ! \n・Pense à prendre tes rôles dans {} \n \n・Tu as utilisé l'invitation de **{}** ".format(
+                    member.mention, rules_channel.mention, inviter.name
+                ),
+                color=0xF7AF00,
+                timestamp=date,
+            )
+        else:
+            date = datetime.datetime.now(timezone("Europe/Berlin"))
+            embedVar = discord.Embed(
+                title="Bienvenue !",
+                url = "http://www.nymeria.org/",
+                description="→ Oh ! {} vient de nous rejoindre ! ← \n \n・Souhaitez lui la bienvenue ! \n・Pense à prendre tes rôles dans {} \n \n・Tu as utilisé une invitation Vanity ".format(
+                    member.mention, rules_channel.mention
+                ),
+                color=0xF7AF00,
+                timestamp=date,
+            )
+
         embedVar.set_thumbnail(url=f'{member.avatar_url}')
         await welcome_channel.send(embed=embedVar)
 
     async def on_member_join(self, member):
-        inviter = await self.get_inviter()
+        inviter = await self.get_inviter(member)
         bot = await self.add_bot_role(member)
         if bot is False:
             await self.welcome_message(member, inviter)
