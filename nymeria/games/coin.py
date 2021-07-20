@@ -1,6 +1,5 @@
-from discord import Message, Client, File
+from discord import File
 from random import randint
-from time import time
 
 
 class Coin:
@@ -11,7 +10,7 @@ class Coin:
         self.channel = message.channel
         self.author = message.author
 
-    async def launch(self, client):
+    async def launch(self):
         n = randint(0,1)
         if n == 0:
             await self.channel.send(f"{self.author.mention}\n Heads",file=File('donnees/totten.png'))

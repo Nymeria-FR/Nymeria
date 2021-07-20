@@ -1,0 +1,1 @@
+from nymeria.message.message import on_message

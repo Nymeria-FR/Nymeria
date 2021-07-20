@@ -1,11 +1,8 @@
-from discord import Message, Client, File
 from random import randint
-from time import time
 
 
 class RPS:
-    """
-	"""
+    """"""
 
     def __init__(self, message):
         self.channel = message.channel

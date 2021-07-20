@@ -1,5 +1,4 @@
 import discord
-from discord import Message, Client, File
 from random import randint
 from time import time
 import csv

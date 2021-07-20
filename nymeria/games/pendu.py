@@ -1,9 +1,5 @@
-import discord
-import csv
 import asyncio
-from discord import Message, Client, File
 from random import randint
-from time import time
 
 
 class Pendu:
