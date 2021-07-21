@@ -1,9 +1,11 @@
-from nymeria import nymeria, config
-from nymeria.join import member_count
+from nymeria import nymeria
 from nymeria.utility import get_guild
+from nymeria.message.moderation.analyse import analyse
 
 @nymeria.event
 async def on_message(message):
+    analyse(message)
+    '''
     if message.content.startswith("n!pp"):
             if len(message.mentions) == 0:
                 pp = message.author.avatar_url
@@ -19,27 +21,6 @@ async def on_message(message):
 
         if message.content.startswith("n!logo"):
             await message.channel.send("", file=File("donnees/logo.gif"))
-
-        if message.content.startswith("n!del"):
-            await self.deleteMessage(message)
-
-        if message.content.startswith("n!ban"):
-            await self.ban(message)
-
-        if message.content.startswith("n!ub"):
-            await self.unban(message)
-
-        if message.content.startswith("n!kick"):
-            await self.kick(message)
-
-        if message.content.startswith("n!mute"):
-            await self.mute(message)
-
-        if message.content.startswith("n!um"):
-            await self.unmute(message)
-
-        if message.content.startswith("n!banlist"):
-            await self.banlist(message)
 
         if message.content.startswith("n!infos"):
             await self.infos(message)
@@ -440,3 +421,4 @@ P
                     await message.channel.send(
                         "Je n'ai pas pu trouvé de données pour cet utilisateur."
                     )
+'''
