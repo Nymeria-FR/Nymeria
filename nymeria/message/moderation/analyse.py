@@ -1,23 +1,33 @@
-from nymeria.message.moderation.mod import deleteMessage
+from nymeria.message.moderation.delete import delete
 
-def analyse(message):
+
+async def moderation_analyse(message):
     if message.content.startswith("n!del"):
-        print("del")
+        await delete(message)
+        return True
 
-    if message.content.startswith("n!ban"):
+    elif message.content.startswith("n!ban"):
         print("ban")
+        return True
 
-    if message.content.startswith("n!ub"):
+    elif message.content.startswith("n!ub"):
         print("ub")
+        return True
 
-    if message.content.startswith("n!kick"):
+    elif message.content.startswith("n!kick"):
         print("kick")
+        return True
 
-    if message.content.startswith("n!mute"):
+    elif message.content.startswith("n!mute"):
         print("mute")
+        return True
 
-    if message.content.startswith("n!um"):
+    elif message.content.startswith("n!um"):
         print("um")
-    
-    if message.content.startswith("n!banlist"):
+        return True
+
+    elif message.content.startswith("n!banlist"):
         print("banlist")
+        return True
+
+    return False

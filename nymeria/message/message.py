@@ -1,10 +1,11 @@
 from nymeria import nymeria
 from nymeria.utility import get_guild
-from nymeria.message.moderation.analyse import analyse
+from nymeria.message.moderation.analyse import moderation_analyse
 
 @nymeria.event
 async def on_message(message):
-    analyse(message)
+    if await moderation_analyse(message):
+        return 
     '''
     if message.content.startswith("n!pp"):
             if len(message.mentions) == 0:
