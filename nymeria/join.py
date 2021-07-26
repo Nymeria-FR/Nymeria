@@ -23,7 +23,6 @@ async def get_inviter(member):
     new_invites = await member.guild.invites()
     for invite in range(len(new_invites)):
         if new_invites[invite].uses > invites[member.guild.id][invite].uses:
-            print(new_invites[invite].uses, invites[member.guild.id][invite].uses)
             return new_invites[invite].inviter.name
 
 

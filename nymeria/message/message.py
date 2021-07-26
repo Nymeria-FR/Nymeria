@@ -1,11 +1,23 @@
 from nymeria import nymeria
 from nymeria.utility import get_guild
 from nymeria.message.moderation.analyse import moderation_analyse
+from nymeria.games import Game
 
 @nymeria.event
 async def on_message(message):
     if await moderation_analyse(message):
         return 
+
+    """
+    if message.content.startswith("n!play"):
+        if len(message.content.split(" ")) < 2:
+            await message.channel.send(
+                f"{message.author.mention}\nJe n'ai pas de jeu en paramètre"
+            )
+            return
+        game = Game(message, "n!")
+        await game.launch(self)
+    """
     '''
     if message.content.startswith("n!pp"):
             if len(message.mentions) == 0:
@@ -26,14 +38,7 @@ async def on_message(message):
         if message.content.startswith("n!infos"):
             await self.infos(message)
 
-        if message.content.startswith("n!play"):
-            if len(message.content.split(" ")) < 2:
-                await message.channel.send(
-                    f"{message.author.mention}\nJe n'ai pas de jeu en paramètre"
-                )
-                return
-            game = Game(message, "n!")
-            await game.launch(self)
+        
 
         if message.content.startswith("n!love"):
             if len(message.content.split(" ")) < 2:
