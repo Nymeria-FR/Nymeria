@@ -1,4 +1,3 @@
-from _typeshed import OpenTextMode
 from nymeria.message.games import *
 from nymeria import nymeria
 
@@ -26,7 +25,7 @@ async def game_analyse(message):
 
     elif(game == "coin"):
         coin = Coin(message)
-        await coin.launch(nymeria)
+        await coin.launch()
 
     elif(game == "pourcb"):
         pourcb = Pourcb(message)
