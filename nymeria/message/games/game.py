@@ -1,49 +1,43 @@
-from nymeria.message.games.bingo import Bingo
+from _typeshed import OpenTextMode
+from nymeria.message.games import *
 from nymeria import nymeria
 
-async def launch(message, game):
+async def game_analyse(message):
+    commande = message.content.split(" ")
+    if len(commande) < 2:
+        return False
+    game = commande[1]
+
     if(game == "bingo"):
         bingo = Bingo(message)
         await bingo.launch(nymeria)
 
-    if(game == "capital"):
-        print("capital")
+    elif(game == "capital"):
+        capital = Capital(message)
+        await capital.launch(nymeria)
 
-    if(game == "pokemon"):
-        print("pokemon")
+    elif(game == "pokemon"):
+        pokemon = Pokemon(message)
+        await pokemon.launch(nymeria)
 
-    if(game == "rps"):
-        print("rps")
+    elif(game == "rps"):
+        rps = RPS(message)
+        await rps.launch(nymeria)
 
-    if(game == "coin"):
-        print("coin")
+    elif(game == "coin"):
+        coin = Coin(message)
+        await coin.launch(nymeria)
 
-    if(game == "pourcb"):
-        print("pourcb")
+    elif(game == "pourcb"):
+        pourcb = Pourcb(message)
+        await pourcb.launch(nymeria)
 
-    if(game == "pendu"):
-        print("pendu")
+    elif(game == "pendu"):
+        pendu = Pendu(message)
+        await pendu.launch(nymeria)
 
-    if(game == "scrabble"):
-        print("scrabble")
+    elif(game == "scrabble"):
+        scrabble = Scrabble(message)
+        await scrabble.launch(nymeria)
 
-    return
-
-"""
-        if(self.game == "capital"):
-            capital = Capital(self.message)
-            await capital.launch(client)
-        if(self.game == "pokemon"):
-            pokemon = Pokemon(self.message)
-            await pokemon.launch(client)
-        if(self.game == "rps"):
-            rps = RPS(self.message)
-            await rps.launch(client)
-        if(self.game == "coin"):
-            coin = Coin(self.message)
-            await coin.launch(client)
-        if(self.game == "pourcb"):
-            pourcb = Pourcb(self.message)
-            await pourcb.launch(client)
-        return
-"""
+    return True

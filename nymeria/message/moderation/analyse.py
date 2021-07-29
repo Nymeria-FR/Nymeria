@@ -7,12 +7,17 @@ from nymeria.message.moderation.mute import unmute
 
 from nymeria.message.moderation.infos import infos
 
+from nymeria.message.games.game import game_analyse
+
 
 async def moderation_analyse(message):
     if message.content.startswith("n!del"):
         await delete(message)
     
     elif await ban_analyse(message):
+        return
+
+    elif await game_analyse(message):
         return
 
     elif message.content.startswith("n!mute"):
