@@ -1,7 +1,6 @@
 from nymeria import nymeria
 from nymeria.utility import get_guild
 from nymeria.message.moderation.analyse import moderation_analyse
-from nymeria.games import Game
 
 @nymeria.event
 async def on_message(message):
@@ -65,7 +64,7 @@ async def on_message(message):
 ────────────▀(@)▀▀▀▀▀▀▀(@)(@)▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀(@)▀
             """
             )
-            await asyncio.sleep(1)
+            await ²sleep(1)
             await cam.edit(
                 content=f"""
 ────────────────▄▌▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀​▀▀▀▀▀▀▌
@@ -333,24 +332,6 @@ P
                 k += 1
                 await asyncio.sleep(1)
                 await nb.edit(content=k)
-
-        if "juif" in message.content:
-            await self.ban_word(message)
-
-        if "negro" in message.content:
-            await self.ban_word(message)
-
-        if "nez gros" in message.content:
-            await self.ban_word(message)
-
-        if "nazi" in message.content:
-            await self.ban_word(message)
-
-        if "negre" in message.content:
-            await self.ban_word(message)
-
-        if "pd" in message.content:
-            await self.ban_word(message)
 
         if message.content.startswith("n!stats"):
 
