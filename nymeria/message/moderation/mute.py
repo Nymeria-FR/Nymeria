@@ -1,14 +1,14 @@
-from discord import HTTPException, Forbidden, Embed
+from discord import HTTPException, Forbidden, Embed, team
+from nymeria.utility import get_guild
 import asyncio
 
 
 async def mute(message):
     await message.delete()
-    guild = message.guild
-    if guild.id == 558023940518313987:
-        for role in guild.roles:
-            if role.id == 755909610803560559:
-                mute_role = role
+    guild = get_guild(message.guild.id)
+    if guild is None:
+        return
+    mute_role = message.guild.get_role(guild["mute_role"])
 
     commande = message.content.split(" ")
     if message.author.guild_permissions.kick_members is False:
@@ -17,8 +17,8 @@ async def mute(message):
             + "cet utilisateur"
         )
         return
-    if len(commande) == 2:
-        try:
+    try:
+        if len(commande) == 2:
             mention = message.mentions[0]
             await mention.add_roles(mute_role)
             embedVar = Embed(
@@ -29,20 +29,7 @@ async def mute(message):
             )
             embedVar.set_thumbnail(url=f"{mention.avatar_url}")
             await message.channel.send(embed=embedVar)
-
-        except HTTPException:
-            await message.channel.send(
-                "{}\n Je ne peux pas mute ".format(message.author.mention)
-                + "cet utilisateur"
-            )
-
-        except Forbidden:
-            await message.channel.send(
-                "{}\n Je ne peux pas mute ".format(message.author.mention)
-                + "cet utilisateur"
-            )
-    if len(commande) == 3:
-        try:
+        if len(commande) == 3:
             mention = message.mentions[0]
             await mention.add_roles(mute_role)
             embedVar = Embed(
@@ -54,7 +41,6 @@ async def mute(message):
                 + " secondes ⛔",
                 color=0xF7AF00,
             )
-
             embedVar.set_thumbnail(url=f"{mention.avatar_url}")
             await message.channel.send(embed=embedVar)
             await asyncio.sleep(int(commande[2]))
@@ -68,27 +54,26 @@ async def mute(message):
             embedVar.set_thumbnail(url=f"{mention.avatar_url}")
             await message.channel.send(embed=embedVar)
 
-        except HTTPException:
-            await message.channel.send(
-                "{}\n Je ne peux pas mute ".format(message.author.mention)
-                + "cet utilisateur"
-            )
+    except HTTPException:
+        await message.channel.send(
+            "{}\n Je ne peux pas mute ".format(message.author.mention)
+            + "cet utilisateur"
+        )
 
-        except Forbidden:
-            await message.channel.send(
-                "{}\n Je ne peux pas mute ".format(message.author.mention)
-                + "cet utilisateur"
-            )
+    except Forbidden:
+        await message.channel.send(
+            "{}\n Je ne peux pas mute ".format(message.author.mention)
+            + "cet utilisateur"
+        )
     return
 
 
 async def unmute(message):
     await message.delete()
-    guild = message.guild
-    if guild.id == 558023940518313987:
-        for role in guild.roles:
-            if role.id == 755909610803560559:
-                mute_role = role
+    guild = get_guild(message.guild.id)
+    if guild is None:
+        return
+    mute_role = message.guild.get_role(guild["mute_role"])
 
     commande = message.content.split(" ")
     if message.author.guild_permissions.kick_members is False:
