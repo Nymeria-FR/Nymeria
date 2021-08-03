@@ -1,5 +1,6 @@
 from discord import Embed
 
+
 async def infos(message):
     await message.delete()
     member = message.mentions[0]

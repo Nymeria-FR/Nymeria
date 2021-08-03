@@ -2,15 +2,16 @@
 bot = true
 token = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 token_ftn = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"  
-ready_chan = "XXXXXXXXXXXXXXXXXX"
+ready_chan = 0
+anonce_vitesse = 0
 
 [servers]
 
     [staf]
-        id = "XXXXXXXXXXXXXXXXXX"
-        member_count = "XXXXXXXXXXXXXXXXXX"
-        welcome_channel = "XXXXXXXXXXXXXXXXXX"
-        role_channel = "XXXXXXXXXXXXXXXXXX"     
-        bot_role = "XXXXXXXXXXXXXXXXXX"
-        mute_role = "XXXXXXXXXXXXXXXXXX"
+        id = 0
+        member_count = 0
+        welcome_channel = 0
+        role_channel = 0     
+        bot_role = 0
+        mute_role = 0
         description = "XXX"

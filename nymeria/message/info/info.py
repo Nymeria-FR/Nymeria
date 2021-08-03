@@ -1,6 +1,7 @@
 from typing import Text
 from nymeria.message.info.fortnite import fortnite_stat
 
+
 async def info_analyse(message):
     if message.content.startswith("n!pp"):
         if len(message.mentions) == 0:
