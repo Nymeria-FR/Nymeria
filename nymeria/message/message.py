@@ -1,6 +1,7 @@
 from nymeria import nymeria
 from nymeria.message.moderation.analyse import moderation_analyse
 from nymeria.message.games.game import game_analyse
+from nymeria.message.info.info import info_analyse
 
 @nymeria.event
 async def on_message(message):
@@ -10,25 +11,10 @@ async def on_message(message):
     elif await game_analyse(message):
         return
 
+    elif await info_analyse(message):
+        return
+
     '''
-    if message.content.startswith("n!pp"):
-            if len(message.mentions) == 0:
-                pp = message.author.avatar_url
-                await message.channel.send(pp)
-                return
-            else:
-                for mention in message.mentions:
-                    pp = mention.avatar_url
-                    await message.channel.send(pp)
-
-        if message.content.startswith("n!reload"):
-            await self.reload_member_count()
-
-        if message.content.startswith("n!logo"):
-            await message.channel.send("", file=File("donnees/logo.gif"))
-
-        if message.content.startswith("n!infos"):
-            await self.infos(message)
 
         
 
@@ -326,79 +312,4 @@ P
                 await asyncio.sleep(1)
                 await nb.edit(content=k)
 
-        if message.content.startswith("n!stats"):
-
-            def fortnite_tracker_api(platform, nickname):
-                URL = (
-                    "https://api.fortnitetracker.com/v1/profile/"
-                    + platform
-                    + "/"
-                    + nickname
-                )
-                req = requests.get(URL, headers={"TRN-Api-Key": config.token_ftn})
-
-                if req.status_code == 200:
-                    try:
-                        # print(req.json())
-                        lifetime_stats = req.json()["lifeTimeStats"]
-                        return lifetime_stats[7:]
-                    except KeyError:
-                        return False
-                else:
-                    return False
-
-            words = message.content.split(" ", 2)
-
-            if len(words) < 3:
-                await self.send_message(
-                    message.channel, "Usage: " + "n!" + "stats <pc,xbl,psn> <nickname>"
-                )
-                return
-
-            platform = words[1].lower()
-
-            # more acceptable platform names
-            if platform == "xbox":
-                platform = "xbl"
-            elif platform == "ps4":
-                platform = "psn"
-
-            if platform not in ("pc", "xbl", "psn"):
-                await self.send_message(
-                    message.channel,
-                    "Usage: " + COMMAND_PREFIX + "stats <pc,xbl,psn> <nickname>",
-                )
-                return
-            else:
-                res = fortnite_tracker_api(platform, words[2])
-
-                if res:
-                    matches_played = res[0]["value"]
-                    wins = res[1]["value"]
-                    win_percent = res[2]["value"]
-                    kills = res[3]["value"]
-                    kd = res[4]["value"]
-
-                    embed = discord.Embed(
-                        title="__Stats Fortnite de " + words[2] + "__", color=0xF7AF00
-                    )
-
-                    embed.add_field(
-                        name="Parties jouées", value=matches_played + "\n", inline=False
-                    )
-                    embed.add_field(name="Victoires", value=wins + "\n", inline=False)
-                    embed.add_field(
-                        name="Pourcentage de victoire",
-                        value=win_percent + "\n",
-                        inline=False,
-                    )
-                    embed.add_field(name="Kills", value=kills + "\n", inline=False)
-                    embed.add_field(name="K/D", value=kd + "\n", inline=False)
-                    await message.channel.send(embed=embed)
-                    if float(kd) < 1:
-                        await message.channel.send("Pas fou le K/D hein")
-                else:
-                    await message.channel.send(
-                        "Je n'ai pas pu trouvé de données pour cet utilisateur."
-                    )
 '''
