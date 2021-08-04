@@ -275,3 +275,4 @@ P
 ​
             """
     )
+    await cam.delete()
