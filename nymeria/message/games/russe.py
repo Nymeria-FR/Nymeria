@@ -8,6 +8,7 @@ class Russe():
 
     async def launch(self):
         n = randint(1, 6)
+        print(n)
         if n == 6:
             await self.channel.send("Pan ! Tu es mort")
 
