@@ -6,3 +6,5 @@ from nymeria.message.games.rps import RPS
 from nymeria.message.games.coin import Coin
 from nymeria.message.games.pourcb import Pourcb
 from nymeria.message.games.scrabble import Scrabble
+from nymeria.message.games.russe import Russe
+

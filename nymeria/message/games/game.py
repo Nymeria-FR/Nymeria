@@ -46,4 +46,9 @@ async def game_analyse(message):
         scrabble = Scrabble(message)
         await scrabble.launch(nymeria)
         return True
+
+    elif(game == "roulette"):
+        russe = Russe(message)
+        await russe.lauch(nymeria)
+        
     return False
