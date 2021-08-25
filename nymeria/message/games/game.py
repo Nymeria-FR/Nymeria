@@ -49,6 +49,6 @@ async def game_analyse(message):
 
     elif(game == "roulette"):
         russe = Russe(message)
-        await russe.lauch(nymeria)
+        await russe.lauch()
         
     return False

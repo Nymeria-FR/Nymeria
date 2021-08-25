@@ -1,17 +1,15 @@
 from random import randint
 
 
-class Russe(self,message):
+class Russe():
 
-    def __init__(self,message):
+    def __init__(self, message):
         self.channel = message.channel
 
+    async def launch(self):
+        n = randint(1, 6)
+        if n == 6:
+            await self.channel.send("Pan ! Tu es mort")
 
-    async def launch(self,client):
-
-        n = randint(1,6)
-        if n == 6: 
-            await message.channel.send("Pan ! Tu es mort")
-
-        else : 
-            await message.channel.send("Bravo, tu as survécu")
+        else:
+            await self.channel.send("Bravo, tu as survécu")
