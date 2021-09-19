@@ -39,27 +39,27 @@ async def welcome_message(member, guild):
     welcome_channel = nymeria.get_channel(guild["welcome_channel"])
     rules_channel = nymeria.get_channel(guild["role_channel"])
     date = datetime.datetime.now(timezone("Europe/Berlin"))
-    invite_message = "・Tu as utilisé l'invitation de **{}**".format(inviter)
+    invite_message = "・Tu as utilisé l'invitation de {}\n".format(inviter)
 
     if inviter == None:
-        invite_message = "Tu as utilisé une invitation vanity"
+        invite_message = "Tu as utilisé une invitation vanity\n"
 
     embedVar = Embed(
         title="Bienvenue !",
         url="http://www.nymeria.org/",
-        description=guild["description"].format(
-            member.mention, rules_channel.mention, inviter
-        ) + invite_message,
+        description=guild["description"].format(member.mention, rules_channel.mention),
         color=0xF7AF00,
         timestamp=date,
     )
+    embedVar.set_footer(text=invite_message)
     embedVar.set_thumbnail(url=f"{member.avatar_url}")
     await welcome_channel.send(embed=embedVar)
 
 
 async def member_count(guild, member):
-    newname = "Membres: {}".format(str(member.guild.member_count))
-    await nymeria.get_channel(guild["member_count"]).edit(name=newname)
+    if guild["member_count"] != 0:
+        newname = "Membres: {}".format(str(member.guild.member_count))
+        await nymeria.get_channel(guild["member_count"]).edit(name=newname)
 
 
 @nymeria.event
